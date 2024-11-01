@@ -8,6 +8,7 @@ const mastermenusRoutes = require("./routes/mastermenus.routes");
 const employeesRoutes = require("./routes/employees.routes");
 const useraccessRoutes = require("./routes/useraccess.routes");
 const issuelogsRoutes = require("./routes/issuelogs.routes");
+const companypoliciesRoutes = require("./routes/companypolicies.routes");
 //connect database
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -21,6 +22,7 @@ fastify.register(mastermenusRoutes, {prefix: '/api/v1/menu'});
 fastify.register(employeesRoutes, {prefix: '/api/v1/emp'});
 fastify.register(useraccessRoutes, {prefix: '/api/v1/usraccess'});
 fastify.register(issuelogsRoutes, {prefix: '/api/v1/issuelogs'});
+fastify.register(companypoliciesRoutes, {prefix: '/api/v1/policy'});
 const start = async () => {
     try {
         await fastify.listen({

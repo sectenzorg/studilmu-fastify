@@ -191,17 +191,19 @@ async function editemployee(request, reply){
     var resp = "";
     try{
         let empid = request.body.userid;
+        let useraccessid = request.body.useraccessid;
         let type = request.body.usertype;
         let empdt=request.body.empdata;
-        if(type===1){
+        if(type==='1'){
             const result=await Employees.findByIdAndUpdate(
                 empid, // Find the document by _id
-                { $set: request.body.empdata },   // Update menudata fields
+                { $set: empdt },   // Update menudata fields
                 { new: true }  );       // Return the updated document);
             const resultaccess=await Useraccess.findByIdAndUpdate(
-                empid, // Find the document by _id
+                useraccessid, // Find the document by _id
                 { $set: request.body.accessdata },   // Update menudata fields
                 { new: true }  );       // Return the updated document);
+            msg = "OK";
         }else{
             const updateFields ={
                 "domaddress":empdt.domaddress
