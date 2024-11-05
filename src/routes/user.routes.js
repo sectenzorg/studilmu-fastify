@@ -7,5 +7,6 @@ async function routes(fastify, options){
     fastify.post("/adduser", { preHandler: auth }, userController.createUser);
     fastify.put("/updateuser/:id",userController.updateUser);
     fastify.delete("/deleteuser/:id",userController.deleteUser);
+    fastify.post("/generatevoucher", userController.generateVoucher);
 }
 module.exports = routes;

@@ -1,4 +1,9 @@
 const mongoose = require("mongoose");
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
 const CompanypoliciesSchema = new mongoose.Schema({
     docid:{
         type:String,
@@ -54,8 +59,18 @@ const CompanypoliciesSchema = new mongoose.Schema({
     },
     departmentname:{
         type: String
+    },
+    category:{
+        type: String
     }
 });
-CompanypoliciesSchema.index({ docid: 'text',status: 'text'});
+// Pre-save middleware to adjust timestamps to Asia/Jakarta
+CompanypoliciesSchema.pre('save', function (next) {
+    const currentDate = dayjs().tz("Asia/Jakarta").format();
+    this.createdate = currentDate;
+    this.lastupdatetime = currentDate;
+    next();
+});
+CompanypoliciesSchema.index({ docid: 'text',status: 'text',departmentname: 'text',category: 'text'});
 const Companypolicies = mongoose.model("Companypolicies",CompanypoliciesSchema);
 module.exports=Companypolicies;
