@@ -40,11 +40,13 @@ async function updateUser(request, reply){
         reply.status(500).send(error);
     }
 }
+
+
 const generateVoucherCode = (digitalorEventCode, periodStartDate, classSession, coursePrice, uniqueChar, yrdt, courseCode) => {
     const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     let code = '';
-    let unique=uniqueChar;
-    let crsCd=courseCode;
+    let unique = uniqueChar;
+    let crsCd =courseCode;
     let yrlstdgt = yrdt.toString().slice(-1);
     for (let i = 0; i < unique; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
@@ -52,6 +54,8 @@ const generateVoucherCode = (digitalorEventCode, periodStartDate, classSession, 
     }
     return `${digitalorEventCode}${yrlstdgt}${classSession}${periodStartDate}${crsCd}${coursePrice}${code}`;
 };
+
+
 const createVoucherObject = (digitalorEventCode, periodStartDate, classSession, coursePrice, uniqueChar, yrdt, courseCode) => {
     return {
         voucherCode: generateVoucherCode(digitalorEventCode, periodStartDate, classSession, coursePrice, uniqueChar, yrdt, courseCode),
@@ -76,7 +80,7 @@ async function generateVoucher(request, reply){
                 resp = {
                     "statuscode"    : 400,
                     "ack"           : 0,
-                    "message"       : 'Unique Code will be 5'
+                    "message"       : 'Unique Code should be 5'
                 }
                 reply.send(resp);
             }

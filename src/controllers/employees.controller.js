@@ -6,7 +6,7 @@ const utc = require('dayjs/plugin/utc');
 const timezone = require('dayjs/plugin/timezone');
 dayjs.extend(utc);
 dayjs.extend(timezone);
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const Mastermenus = require("../models/mastermenus.model");
 async function getjakartatime(request, reply){
     var ack = 1;
