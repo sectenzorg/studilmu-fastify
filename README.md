@@ -48,7 +48,7 @@ chmod +x run-arm.sh
 Once the script has execute permissions, you can run the `run-arm.sh` script to build the Docker image and start the container.
 
 ```
-./run.sh
+./run-arm.sh
 ```
 
 #### What the Script Does:
