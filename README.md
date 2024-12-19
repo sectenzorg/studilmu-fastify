@@ -35,17 +35,17 @@ docker --version
 
 If Docker is not installed, please download and install Docker Desktop from Docker's official website.
 
-### 3. Grant Execute Permissions to `run.sh`
+### 3. Grant Execute Permissions to `run-arm.sh`
 
 Ensure the `run.sh` script has execute permissions. Run the following command:
 
 ```
-chmod +x run.sh
+chmod +x run-arm.sh
 ```
 
-### 4. Run the `run.sh` Script
+### 4. Run the `run-arm.sh` Script
 
-Once the script has execute permissions, you can run the `run.sh` script to build the Docker image and start the container.
+Once the script has execute permissions, you can run the `run-arm.sh` script to build the Docker image and start the container.
 
 ```
 ./run.sh
